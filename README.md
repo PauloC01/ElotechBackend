@@ -46,9 +46,9 @@ Url padrão: http://localhost:8080/contatos
 # Método POST  "/adicionar"
 A requisição deve possuir o seguinte corpo:
 {
-"nome":"pessoal",
-"telefone":"12345678910",
-"email":"abc@gmail.com"
+"nome":"",
+"telefone":"",
+"email":""
 }
 
 # Métodos GET "/busca"
@@ -60,10 +60,10 @@ Todos os métodos irão retornar um objeto igual ao corpo da requisição, adici
 
 /pagina-parametros? você pode passar seus proprios paramêtros de busca que incluem a página e o tamanho da lista (page=&size=) respectivamente
 
-/busca-por-filtro busca com filtros, podendo ser qualquer um dos atributos do objeto. Irá retornar uma lista, ou um objeto identico ao solicitado
+/busca-por-filtro busca com filtros, podendo ser qualquer um dos atributos do objeto. Irá retornar uma lista, ou um objeto idêntico ao solicitado
 
 # Método PUT "/atualizarPessoa/{id}"
-Com o corpo o mesmo corpo da requisição POST, é possível  atualizar o contatoo apenas informando seu id, o contato deve ser atualizado em sua própria API.
+Com o corpo o mesmo corpo da requisição POST, é possível  atualizar o contato apenas informando seu id, o contato deve ser atualizado em sua própria API.
 
 # Método DELETE "/delete/{id}"
 Apenas informe o id e o cadastro do Banco de Dados será deletado.
