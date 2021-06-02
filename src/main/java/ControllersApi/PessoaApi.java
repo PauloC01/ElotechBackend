@@ -25,28 +25,28 @@ public class PessoaApi {
     @ResponseStatus(HttpStatus.CREATED)
     private Pessoa adicionarPessoa(@RequestBody Pessoa pessoa) throws Exception {
         Date dataAtual = new Date();
-        if(pessoa.getDataNascimento().after(dataAtual) == true){throw new Exception("A data é futura!");}
+        if(pessoa.getDataNascimento().after(dataAtual) == true){throw new Exception("A data informada é futura!");}
         return pessoaRepo.save(pessoa);
     };
 
-    @GetMapping("/buscar-id/{id}")//trocar por pessoa
+    @GetMapping("/busca/buscar-id/{id}")
     private Pessoa buscarPorId(@PathVariable Integer id){
         return pessoaRepo.findById(id).get();
     };
 
-    @GetMapping("/lista-pagina-simples/{pagina}")
+    @GetMapping("/busca/pagina-simples/{pagina}")
     private String listaPessoasPaginada(@PathVariable Integer pagina){
         Page<Pessoa> page =  pessoaRepo.findAll(PageRequest.of(pagina,10));
         return page.getContent().toString();
     };
 
-    @GetMapping("/lista-pagina-parametros")
+    @GetMapping("/busca/pagina-parametros")
     private String paginacaoParametros(Pageable pageable){
         Page<Pessoa> page = pessoaRepo.findAll(pageable);
         return page.getContent().toString();
     };
 
-    @GetMapping("/busca-por-filtro")
+    @GetMapping("/busca/busca-por-filtro")
     private String paginacaoFiltrada(BuscaPessoaForm buscaPessoaForm){
         return pessoaRepo.findAll(buscaPessoaForm.toSpec()).toString();
 
